@@ -17,6 +17,7 @@ export const Content = styled(Dialog.Content, {
   backgroundColor: '$gray900',
   padding: '3rem',
   paddingTop: '4.5rem',
+  fontSize: '$lg',
 })
 
 export const CloseButton = styled(Dialog.Close, {

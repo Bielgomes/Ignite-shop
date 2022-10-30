@@ -12,10 +12,28 @@ export const Trigger = styled(Dialog.Trigger, {
   backgroundColor: '$gray800',
   color: '$gray300',
   cursor: 'pointer',
+  position: 'relative',
 
-  variants: {
-    cartItens: {
-      
-    }
+  'span': {
+    position: 'absolute',
+    
+    width: 24,
+    height: 24,
+
+    top: -12,
+    right: -12,
+
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+
+    boxSizing: 'content-box',
+    border: '3px solid $gray900',
+    borderRadius: 24,
+    backgroundColor: '$green500',
+
+    color: '$white',
+    fontWeight: 'bold',
+    fontSize: '$sm',
   }
 })
