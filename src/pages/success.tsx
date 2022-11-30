@@ -69,7 +69,7 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   });
 
   const images = session.line_items.data.map((item) => {
-    return item.price.product.images;
+    return item.price.product.images 
   });
 
   const customerName = session.customer_details.name

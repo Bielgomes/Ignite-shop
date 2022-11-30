@@ -1,8 +1,12 @@
 import * as Dialog from '@radix-ui/react-dialog'
+<<<<<<< HEAD
 import { useShoppingCart } from 'use-shopping-cart'
 import axios from "axios"
 
 import { Overlay, Content, CloseButton, ProductCard, Info, ImageContainer, Title, Products, InfoContainer, CheckoutArea, Quantity, Total, CheckoutButton } from '../../styles/components/cartModal'
+=======
+import { Overlay, Content, CloseButton, ProductCard, Info, ImageContainer, Title, Products, InfoContainer } from '../../styles/components/cartModal'
+>>>>>>> fe4529519a6621993e743f0f55d4d57af5021bf3
 
 import { X } from 'phosphor-react'
 import Image from 'next/future/image'
@@ -51,6 +55,7 @@ export function CartModal() {
         </CloseButton>
 
         <Products>
+<<<<<<< HEAD
 
           {productList.map(product => (
             <ProductCard key={product.id}>
@@ -81,6 +86,48 @@ export function CartModal() {
           <CheckoutButton onClick={handleCheckout}>Finalizar compra</CheckoutButton>
         </CheckoutArea>
 
+=======
+          <ProductCard>
+            <ImageContainer>
+
+            </ImageContainer>
+            <InfoContainer>
+              <Info>
+                <span>Camiseta Beyond the Limits</span>
+                <strong>R$ 79,90</strong>
+              </Info>
+              <button>Remover</button>
+            </InfoContainer>
+          </ProductCard>
+
+          <ProductCard>
+            <ImageContainer>
+
+            </ImageContainer>
+            <InfoContainer>
+              <Info>
+                <span>Camiseta Beyond the Limits</span>
+                <strong>R$ 79,90</strong>
+              </Info>
+              <button>Remover</button>
+            </InfoContainer>
+          </ProductCard>
+
+          <ProductCard>
+            <ImageContainer>
+
+            </ImageContainer>
+            <InfoContainer>
+              <Info>
+                <span>Camiseta Beyond the Limits</span>
+                <strong>R$ 79,90</strong>
+              </Info>
+              <button>Remover</button>
+            </InfoContainer>
+          </ProductCard>
+          
+        </Products>
+>>>>>>> fe4529519a6621993e743f0f55d4d57af5021bf3
       </Content>
     </Dialog.Portal>
 )
