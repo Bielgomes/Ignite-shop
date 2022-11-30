@@ -3,18 +3,24 @@ import Image from "next/future/image";
 import Head from "next/head";
 import Link from "next/link";
 import Stripe from "stripe";
+import { useShoppingCart } from "use-shopping-cart";
 import { stripe } from "../lib/stripe";
 import { ImageContainer, SuccessContainer } from "../styles/pages/success";
 
 interface SuccessProps {
-  customerName: string
-  product: {
-    name: string
-    imageUrl: string
-  }
+  customerName: string,
+  images: string[],
 }
 
-export default function Success({ customerName, product }: SuccessProps) {
+export default function Success({ customerName, images }: SuccessProps) {
+  const cart = useShoppingCart();
+
+  if (cart.cartCount > 1) {
+    cart.clearCart();
+  }
+  const amount = images.length;
+  const itensText = amount > 1 ? 'camisetas' : 'camiseta'
+  
   return (
     <>
       <Head>
@@ -27,11 +33,15 @@ export default function Success({ customerName, product }: SuccessProps) {
         <h1>Compra efetuada!</h1>
 
         <ImageContainer>
-          <Image src={product.imageUrl} width={120} height={110} alt="" />
+          {images.map((image) => {
+            return (
+              <Image key={image[0]} src={image[0]} alt="" width={140} height={140} />
+            )
+          })}
         </ImageContainer>
 
         <p>
-        Uhuul <strong>{customerName}</strong>, sua <strong>{product.name}</strong> já está a caminho da sua casa. 
+          Uhuul <strong>{customerName}</strong>, sua compra de {amount} {itensText} já está a caminho da sua casa. 
         </p>
 
         <Link href="/">
@@ -56,18 +66,18 @@ export const getServerSideProps: GetServerSideProps = async ({ query }) => {
   
   const session = await stripe.checkout.sessions.retrieve(sessionId, {
     expand: ['line_items', 'line_items.data.price.product']
-  })
+  });
+
+  const images = session.line_items.data.map((item) => {
+    return item.price.product.images;
+  });
 
   const customerName = session.customer_details.name
-  const product = session.line_items.data[0].price.product as Stripe.Product
 
   return {
     props: {
       customerName,
-      product: {
-        name: product.name,
-        imageUrl: product.images[0]
-      }
+      images
     }
   }
 }
