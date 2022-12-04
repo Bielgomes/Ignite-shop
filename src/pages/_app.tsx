@@ -34,14 +34,6 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <Dialog.Trigger asChild>
               <CartButton />
             </Dialog.Trigger>
-        <Dialog.Root>
-          
-          <Dialog.Trigger asChild>
-            <CartButton css={{ $$cartItems: 1 }}>
-              <Handbag size={24} weight="bold" />
-              <span>10</span>
-            </CartButton>
-          </Dialog.Trigger>
 
             <CartModal />
           </Dialog.Root>
