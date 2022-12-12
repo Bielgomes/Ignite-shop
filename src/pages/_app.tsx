@@ -4,7 +4,7 @@ import { globalStyles } from "../styles/global"
 import * as Dialog from '@radix-ui/react-dialog'
 
 import logoImg from '../assets/logo.svg'
-import { CartButton, Container, Header } from "../styles/pages/app"
+import { Container, Header } from "../styles/pages/app"
 
 import Image from "next/future/image"
 import { CartModal } from "./components/cartModal"
